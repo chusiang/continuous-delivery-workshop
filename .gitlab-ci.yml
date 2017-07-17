@@ -1,0 +1,37 @@
+stages:
+  - build
+  - deploy
+  - test
+  - release
+
+.job_template: &job_base_def
+  image: chusiang/ansible:alpine-3.6
+  stage: ${STAGE_NAME}
+  script:
+    - echo "fake ${STAGE_NAME}"
+  tags:
+      - docker
+  allow_failure: false
+
+build:
+  <<: *job_base_def
+  variables:
+    STAGE_NAME: build
+
+deploy:
+  <<: *job_base_def
+  variables:
+    STAGE_NAME: deploy
+
+test:
+  <<: *job_base_def
+  variables:
+    STAGE_NAME: test
+
+release:
+  <<: *job_base_def
+  variables:
+    STAGE_NAME: release
+  when: manual
+
+# vim: ft=yaml :
