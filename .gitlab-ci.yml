@@ -4,7 +4,7 @@ stages:
   - test
   - release
 
-build: 
+build_binary: 
   image: chusiang/ansible:alpine-3.6
   stage: build
   script:
@@ -12,7 +12,7 @@ build:
   tags:
       - docker
 
-deploy: 
+deploy_to_development: 
   image: chusiang/ansible:alpine-3.6
   stage: deploy
   script:
@@ -20,7 +20,7 @@ deploy:
   tags:
       - docker
 
-test: 
+test_development: 
   image: chusiang/ansible:alpine-3.6
   stage: test
   script:
@@ -28,7 +28,7 @@ test:
   tags:
       - docker
 
-release: 
+release_to_production: 
   image: chusiang/ansible:alpine-3.6
   stage: release
   script:
