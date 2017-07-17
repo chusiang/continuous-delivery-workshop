@@ -35,3 +35,6 @@ release:
     - echo "fake release"
   tags:
       - docker
+  when: manual
+
+# vim: ft=yaml :
