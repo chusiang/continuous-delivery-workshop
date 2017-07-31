@@ -9,7 +9,7 @@ build_binary:
   stage: build
   script:
     - apt-get update
-    - apt-get install make
+    - apt-get install -y make
     - make build
   artifacts:
     paths:
