@@ -8,10 +8,13 @@ build_binary:
   image: ubuntu:16.04
   stage: build
   script:
-    - apt-get update
-    - apt-get install -y make
-    - make build
+    # For fix bad permissions of control directory on GitLab CI.
+    # > https://gitlab.com/chusiang/coscup2017-cd-demo/-/jobs/26274225
+    - chmod 755 penguin-htdocs/DEBIAN
+
+    - dpkg -b penguin-htdocs
   artifacts:
+    expire_in: 1 week
     paths:
       - penguin-htdocs.deb
   tags:
