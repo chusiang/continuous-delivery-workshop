@@ -1,0 +1,6 @@
+Package: penguin-htdocs
+Version: 0.1
+Architecture: all
+Description: Demo html documents for DevOps Taiwan x COSCUP 2017.
+Maintainer: Chu-Siang Lai <chusiang@drx.tw>
+Replaces: nginx-common
