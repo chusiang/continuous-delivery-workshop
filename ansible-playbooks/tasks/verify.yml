@@ -1,0 +1,34 @@
+#!/usr/bin/env ansible-playbook
+# ============================================================
+#  Author: Chu-Siang Lai / chusiang (at) drx.tw
+#  Blog: http://note.drx.tw
+#  Filename: verify.yml
+#  Modified: 2017-008-01 00:53
+#  Description: Ansible Playbook demo for COSCUP 2017.
+#
+#  我們可以使用 command 與 shell module 來跑 shell command 的指令
+#  ，差別在於 shell module 支援 '|', '&&', '||' 等較複雜的應用。 
+#
+# =========================================================== 
+---
+
+# 檢查網頁伺服器行程。
+- name: check nginx process
+  shell: 'ps -A | grep nginx'
+  register: nginx_process
+
+# 檢查網頁內容。
+- name: check web state
+  command: 'curl -s http://localhost'
+  register: http_state
+
+# 印出檢查結果。
+- name: print nginx process
+  debug:
+    msg: '{{ nginx_process.stdout_lines }}'
+
+- name: print web state
+  debug:
+    msg: '{{ http_state.stdout_lines }}'
+
+# vim: ft=ansible :

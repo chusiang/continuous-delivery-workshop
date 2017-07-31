@@ -1,0 +1,72 @@
+#!/usr/bin/env ansible-playbook
+# ============================================================
+#  Author: Chu-Siang Lai / chusiang (at) drx.tw
+#  Blog: http://note.drx.tw
+#  Filename: setup.yml
+#  Modified: 2017-08-01 00:53
+#  Description: Ansible Playbook demo for COSCUP 2017.
+# =========================================================== 
+
+---
+
+# Ansible Playbook
+#
+# * Ansible Playbook 使用 YAML 格式。
+# * 一個 Playbook 可以有多個 Play，且一個 Play 可以有多個 tasks。
+
+# Play
+######
+
+- name: ==> Setup demo instance ...
+  hosts: all
+
+  # Tasks
+  #######
+
+  tasks:
+    # 執行 'apt-get update' 指令。
+    - name: update apt repo cache
+      become: true
+      apt:
+        name: nginx
+        update_cache: yes
+
+    # 執行 'apt-get install nginx' 指令。
+    - name: install nginx with apt
+      become: true
+      apt:
+        name: nginx
+        state: present
+
+    # (security) 藉由移除 server_tokens 前的 '#' 字元來關閉 server_tokens。
+    - name: turn server_tokens off
+      become: true
+      lineinfile:
+        path: '/etc/nginx/nginx.conf'
+        regexp: 'server_tokens off;'
+        insertafter: '# server_tokens off;'
+        line: 'server_tokens off;'
+        state: 'present'
+      notify: restart nginx
+
+  # Handlers 
+  ##########
+
+  # 當確認事件有被觸發才會動作，1 個 handler 可被多個 task 通知 (notify)，
+  # 並於 tasks 跑完才會執行。
+
+  handlers:
+
+    # 執行 'sudo service nginx restart' 指令。
+    - name: 'restart nginx'
+      become: true
+      service:
+        name: 'nginx'
+        enabled: 'yes'
+        state: 'restarted'
+
+  post_tasks:
+    - name: include verify tasks
+      include: tasks/verify.yml
+
+# vim: ft=ansible :
