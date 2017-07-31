@@ -5,10 +5,13 @@ stages:
   - release
 
 build_binary: 
-  image: chusiang/ansible:alpine-3.6
+  image: ubuntu:16.04
   stage: build
   script:
-    - echo "fake build"
+    - make build
+  artifacts:
+    paths:
+      - penguin-htdocs.deb
   tags:
       - docker
 
@@ -16,7 +19,7 @@ deploy_to_dev:
   image: chusiang/ansible:alpine-3.6
   stage: deploy
   script:
-    - echo "fake deploy"
+    - ls
   tags:
       - docker
 
