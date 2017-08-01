@@ -1,0 +1,13 @@
+# ansible
+.vagrant
+ansible-retry/
+roles/
+secret.txt
+setup.retry
+
+# docker build
+builds/*/output.log
+tests/*/output.log
+
+# Artifacts
+*.deb
