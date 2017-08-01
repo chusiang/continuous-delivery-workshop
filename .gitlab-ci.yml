@@ -30,7 +30,7 @@ deploy_to_dev:
     - ansible-playbook deploy.yml
     - rm -f secret.txt
   only:
-    - develop@chusiang/coscup2017-cd-demo
+    - develop
   tags:
       - docker
 
@@ -51,8 +51,8 @@ release_to_prd:
     - ansible-playbook -i production deploy.yml
     - rm -f secret.txt
   only:
-    - master@chusiang/coscup2017-cd-demo
-    - tags@chusiang/coscup2017-cd-demo
+    - master
+    - tags
   tags:
       - docker
   when: manual
