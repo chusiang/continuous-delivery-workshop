@@ -10,26 +10,26 @@ This is a demo of **Continuous Delivery with Ansible and GitLab CI**  for COSCUP
 
 Package the htdocs to deb file.
 
-1. deb file architecture.
+1. Architecture of deb file.
 
-```
-$ tree penguin-htdocs
-penguin-htdocs
-├── DEBIAN
-│   └── control
-└── var
-    └── www
-        └── html
-            └── index.html
+    ```
+    $ tree penguin-htdocs
+    penguin-htdocs
+    ├── DEBIAN
+    │   └── control
+    └── var
+        └── www
+            └── html
+                └── index.html
 
-4 directories, 2 files
-```
+    4 directories, 2 files
+    ```
 
-2. Build the deb file on GitLab CI.
+1. Build the deb file on GitLab CI.
 
-```
-$ dpkg -b penguin-htdocs
-```
+    ```
+    $ dpkg -b penguin-htdocs
+    ```
 
 ### Deploy
 
