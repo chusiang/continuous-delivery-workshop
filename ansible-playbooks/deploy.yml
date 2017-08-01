@@ -29,11 +29,20 @@
         name: penguin-htdocs
         state: absent
 
+    - name: copy penguin-htdocs package to managed node
+      copy:
+        src: ../penguin-htdocs.deb
+        dest: /tmp/
+
     - name: install penguin-htdocs
       become: true
       apt:
-        name: ../penguin-htdocs.deb
-        state: present
+        deb: /tmp/penguin-htdocs.deb
+
+    - name: remove penguin-htdocs.deb
+      file:
+        path: /tmp/penguin-htdocs.deb
+        state: absent
 
   post_tasks:
     - name: include verify tasks
