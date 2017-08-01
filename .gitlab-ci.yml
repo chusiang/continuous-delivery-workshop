@@ -26,7 +26,7 @@ deploy_to_dev:
   script:
     - ls
     - cd ansible-playbooks/
-    - echo $VAULT_KEY > secret.txt
+    - echo "${VAULT_KEY}" > secret.txt
     - ansible-playbook deploy.yml
     - rm -f secret.txt
   only:
@@ -47,7 +47,7 @@ release_to_prd:
   stage: release
   script:
     - cd ansible-playbooks/
-    - echo ${VAULT_KEY} > secret.txt
+    - echo "${VAULT_KEY}" > secret.txt
     - ansible-playbook -i production deploy.yml
     - rm -f secret.txt
   only:
