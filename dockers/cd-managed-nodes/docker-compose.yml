@@ -1,0 +1,17 @@
+version: '2'
+services:
+
+  staging:
+    ports:
+      - 10022:22/tcp
+      - 10080:80/tcp
+    image: chusiang/ansible-managed-node:ubuntu-16.04
+    restart: always
+
+  production:
+    ports:
+      - 20022:22/tcp
+      - 20080:80/tcp
+    image: chusiang/ansible-managed-node:ubuntu-16.04
+    restart: always
+
