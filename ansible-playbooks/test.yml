@@ -25,7 +25,7 @@
 
     - name: print testing result | stg.demo.drx.tw
       debug:
-        msg: '{{ stage_web.content }}'
+        msg: '{{ stage_web }}'
       with_inventory_hostnames: stg.demo.drx.tw
 
     # Production
@@ -38,7 +38,7 @@
 
     - name: print testing result | prd.demo.drx.tw
       debug:
-        msg: '{{ production_web.content }}'
+        msg: '{{ production_web }}'
       with_inventory_hostnames: prd.demo.drx.tw
 
 # vim: ft=ansible :
