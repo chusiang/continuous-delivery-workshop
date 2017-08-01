@@ -20,20 +20,10 @@
 - name: ==> Setup demo instance ...
   hosts: all
 
-  # Staging: stg
-  # Production: prd
-  vars:
-    env: stg
-
   # Tasks
   #######
 
   tasks:
-    - name: rename the hostname
-      become: true
-      hostname:
-        name: '{{ env }}.demo.drx.tw'
-
     # 執行 'apt-get update' 指令。
     - name: update apt repo cache
       become: true
