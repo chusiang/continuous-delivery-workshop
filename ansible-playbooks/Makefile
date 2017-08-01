@@ -1,9 +1,13 @@
 .PHONY: main boot run clean
 
-main: run
+main: syntax_check
 
 init:
 	if [ ! -d "/ansible-retry" ]; then mkdir "/ansible-retry"; fi
+
+syntax_check:
+	ansible-playbook --syntax-check \
+		setup.yml
 
 boot:
 	vagrant up
