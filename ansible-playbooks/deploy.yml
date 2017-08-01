@@ -1,0 +1,42 @@
+#!/usr/bin/env ansible-playbook
+# ============================================================
+#  Author: Chu-Siang Lai / chusiang (at) drx.tw
+#  Blog: http://note.drx.tw
+#  Filename: deploy.yml
+#  Modified: 2017-08-01 23:27
+#  Description: Ansible Playbook demo for COSCUP 2017.
+# =========================================================== 
+---
+
+# Ansible Playbook
+#
+# * Ansible Playbook 使用 YAML 格式。
+# * 一個 Playbook 可以有多個 Play，且一個 Play 可以有多個 tasks。
+
+# Play
+######
+
+- name: ==> Deploy demo instance ...
+  hosts: all
+
+  # Tasks
+  #######
+
+  tasks:
+    - name: uninstall penguin-htdocs
+      become: true
+      apt:
+        name: penguin-htdocs
+        state: absent
+
+    - name: install penguin-htdocs
+      become: true
+      apt:
+        name: ../penguin-htdocs.deb
+        state: present
+
+  post_tasks:
+    - name: include verify tasks
+      include: tasks/verify.yml
+
+# vim: ft=ansible :

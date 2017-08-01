@@ -7,7 +7,8 @@ init:
 
 syntax_check:
 	ansible-playbook --syntax-check \
-		setup.yml
+		setup.yml \
+		deploy.yml
 
 boot:
 	vagrant up
