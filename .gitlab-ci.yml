@@ -25,6 +25,10 @@ deploy_to_dev:
   stage: deploy
   script:
     - ls
+    - cd ansible-playbooks/
+    - echo ${VAULT_KEY} > secret.txt
+    - ansible-playbook deploy.yml
+    - rm -f secret.txt
   tags:
       - docker
 
@@ -40,7 +44,10 @@ release_to_prd:
   image: chusiang/ansible:alpine-3.6
   stage: release
   script:
-    - echo "fake release"
+    - cd ansible-playbooks/
+    - echo ${VAULT_KEY} > secret.txt
+    - ansible-playbook -i production deploy.yml
+    - rm -f secret.txt
   tags:
       - docker
   when: manual
