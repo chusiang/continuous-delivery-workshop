@@ -8,15 +8,7 @@
 # =========================================================== 
 ---
 
-# Ansible Playbook
-#
-# * Ansible Playbook 使用 YAML 格式。
-# * 一個 Playbook 可以有多個 Play，且一個 Play 可以有多個 tasks。
-
-# Play
-######
-
-- name: ==> Deploy demo instance ...
+- name: ==> Deploying demo instance ...
   hosts: all
 
   # Tasks

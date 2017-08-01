@@ -1,0 +1,44 @@
+#!/usr/bin/env ansible-playbook
+# ============================================================
+#  Author: Chu-Siang Lai / chusiang (at) drx.tw
+#  Blog: http://note.drx.tw
+#  Filename: test.yml
+#  Modified: 2017-08-02 00:24
+#  Description: Ansible Playbook demo for COSCUP 2017.
+# =========================================================== 
+---
+
+- name: ==> Testing demo instance ...
+  hosts: localhost
+
+  # Tasks
+  #######
+
+  tasks:
+    # Staging
+    - name: smoke test | stg.demo.drx.tw
+      uri:
+        url: "http://{{ hostvars[item]['ansible_ssh_host'] }}:10080"
+        return_content: yes
+      register: stage_web
+      with_inventory_hostnames: stg.demo.drx.tw
+
+    - name: print testing result | stg.demo.drx.tw
+      debug:
+        msg: '{{ stage_web.content }}'
+      with_inventory_hostnames: stg.demo.drx.tw
+
+    # Production
+    - name: smoke test | prd.demo.drx.tw
+      uri:
+        url: "http://{{ hostvars[item]['ansible_ssh_host'] }}:20080"
+        return_content: yes
+      register: production_web
+      with_inventory_hostnames: prd.demo.drx.tw
+
+    - name: print testing result | prd.demo.drx.tw
+      debug:
+        msg: '{{ production_web.content }}'
+      with_inventory_hostnames: prd.demo.drx.tw
+
+# vim: ft=ansible :
