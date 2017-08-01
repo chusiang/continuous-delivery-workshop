@@ -29,6 +29,8 @@ deploy_to_dev:
     - echo ${VAULT_KEY} > secret.txt
     - ansible-playbook deploy.yml
     - rm -f secret.txt
+  only:
+    - develop@chusiang/coscup2017-cd-demo
   tags:
       - docker
 
@@ -48,6 +50,9 @@ release_to_prd:
     - echo ${VAULT_KEY} > secret.txt
     - ansible-playbook -i production deploy.yml
     - rm -f secret.txt
+  only:
+    - master@chusiang/coscup2017-cd-demo
+    - tags@chusiang/coscup2017-cd-demo
   tags:
       - docker
   when: manual
