@@ -49,6 +49,12 @@
         state: 'present'
       notify: restart nginx
 
+    - name: 'start nginx'
+      become: true
+      service:
+        name: 'nginx'
+        state: 'started'
+
   # Handlers 
   ##########
 
