@@ -36,6 +36,12 @@
         path: /tmp/penguin-htdocs.deb
         state: absent
 
+    - name: 'start nginx'
+      become: true
+      service:
+        name: 'nginx'
+        state: 'started'
+
   post_tasks:
     - name: include verify tasks
       include: tasks/verify.yml
