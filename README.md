@@ -1,4 +1,4 @@
-# Continuous Delivery demo for COSCUP 2017
+# Continuous Delivery demo for COSCUP 2017 Ⅱ
 
 [![build status](https://gitlab.com/chusiang/coscup2017-cd-demo/badges/master/build.svg)](https://gitlab.com/chusiang/coscup2017-cd-demo/commits/master)
 
