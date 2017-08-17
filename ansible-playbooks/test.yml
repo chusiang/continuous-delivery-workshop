@@ -18,7 +18,7 @@
     # Staging
     - name: smoke test | stg.demo.drx.tw
       uri:
-        url: "http://{{ hostvars[item]['ansible_ssh_host'] }}"
+        url: "http://{{ hostvars[item]['ansible_ssh_host'] }}:10080"
         return_content: yes
       register: stage_web
       with_inventory_hostnames: stg.demo.drx.tw
@@ -31,7 +31,7 @@
     # Production
     - name: smoke test | prd.demo.drx.tw
       uri:
-        url: "http://{{ hostvars[item]['ansible_ssh_host'] }}"
+        url: "http://{{ hostvars[item]['ansible_ssh_host'] }}:20080"
         return_content: yes
       register: production_web
       with_inventory_hostnames: prd.demo.drx.tw
