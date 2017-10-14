@@ -1,10 +1,13 @@
-# Continuous Delivery workshop
+# Continuous Delivery Workshop with Ansible x GitLab CI
 
 [![build status](https://gitlab.com/chusiang/continuous-delivery-workshop/badges/master/build.svg)](https://gitlab.com/chusiang/continuous-delivery-workshop/commits/master)
 
-This is a Lab for **Continuous Delivery workshop with Ansible x GitLab CI** .
+This is a **Continuous Delivery Lab**, and it's fork from [@chusiang/coscup2017-cd-demo](https://gitlab.com/chusiang/coscup2017-cd-demo).
+
+## Overall
 
 ![The overall of continuous delivery workshop](image/the_cd_workshop_overall.jpg)
+Loop (Engineer -> Git server -> CI server -> Build stage -> Deploy stage -> Test stage -> Release stage -> Customer).
 
 ## The Pipeline
 
