@@ -30,9 +30,9 @@ deploy_to_dev:
     - ansible-playbook deploy.yml
     - rm -f secret.txt
   only:
-    - master@chusiang/coscup2017-cd-demo
-    - develop@chusiang/coscup2017-cd-demo
-    - tags@chusiang/coscup2017-cd-demo
+    - master@chusiang/continuous-delivery-workshop
+    - develop@chusiang/continuous-delivery-workshop
+    - tags@chusiang/continuous-delivery-workshop
   tags:
     - docker
 
@@ -45,9 +45,9 @@ test_dev:
     - ansible-playbook test.yml
     - rm -f secret.txt
   only:
-    - master@chusiang/coscup2017-cd-demo
-    - develop@chusiang/coscup2017-cd-demo
-    - tags@chusiang/coscup2017-cd-demo
+    - master@chusiang/continuous-delivery-workshop
+    - develop@chusiang/continuous-delivery-workshop
+    - tags@chusiang/continuous-delivery-workshop
   tags:
     - docker
 
@@ -60,8 +60,8 @@ release_to_prd:
     - ansible-playbook -i production deploy.yml
     - rm -f secret.txt
   only:
-    - master@chusiang/coscup2017-cd-demo
-    - tags@chusiang/coscup2017-cd-demo
+    - master@chusiang/continuous-delivery-workshop
+    - tags@chusiang/continuous-delivery-workshop
   tags:
     - docker
 
