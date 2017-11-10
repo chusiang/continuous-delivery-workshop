@@ -5,7 +5,7 @@
 #  Filename: setup.yml
 #  Modified: 2017-08-01 00:53
 #  Description: Ansible Playbook demo for COSCUP 2017.
-# =========================================================== 
+# ===========================================================
 
 ---
 
@@ -24,6 +24,10 @@
   #######
 
   tasks:
+    - name: echo environment
+      debug:
+        msg: "{{ env }}"
+
     # 執行 'apt-get update' 指令。
     - name: update apt repo cache
       become: true
@@ -55,7 +59,7 @@
         name: 'nginx'
         state: 'started'
 
-  # Handlers 
+  # Handlers
   ##########
 
   # 當確認事件有被觸發才會動作，1 個 handler 可被多個 task 通知 (notify)，
