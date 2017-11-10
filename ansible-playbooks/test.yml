@@ -5,7 +5,7 @@
 #  Filename: test.yml
 #  Modified: 2017-08-02 00:24
 #  Description: Ansible Playbook demo for COSCUP 2017.
-# =========================================================== 
+# ===========================================================
 ---
 
 - name: ==> Testing demo instance ...

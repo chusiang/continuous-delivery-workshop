@@ -5,7 +5,7 @@
 #  Filename: deploy.yml
 #  Modified: 2017-08-01 23:27
 #  Description: Ansible Playbook demo for COSCUP 2017.
-# =========================================================== 
+# ===========================================================
 ---
 
 - name: ==> Deploying demo instance ...
