@@ -32,7 +32,6 @@
     - name: update apt repo cache
       become: true
       apt:
-        name: nginx
         update_cache: yes
 
     # 執行 'apt-get install nginx' 指令。
