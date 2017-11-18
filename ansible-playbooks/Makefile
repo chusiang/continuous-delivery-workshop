@@ -8,7 +8,14 @@ init:
 syntax_check:
 	ansible-playbook --syntax-check \
 		setup.yml \
-		deploy.yml
+		deploy.yml \
+		push_ssh_pub_key.yml
+
+lint_check:
+	ansible-lint \
+		setup.yml \
+		deploy.yml \
+		push_ssh_pub_key.yml
 
 boot:
 	vagrant up
