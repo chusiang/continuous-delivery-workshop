@@ -1,0 +1,25 @@
+---
+
+# Push the ssh public key to managed nodes.
+- name: ==> push the ssh public key ...
+  hosts: all
+  become: true
+  vars:
+    username: docker
+
+  tasks:
+    - name: create ssh key directory
+      file:
+        path: '/home/{{ username }}/.ssh/'
+        state: directory
+        owner: '{{ username }}'
+        group: '{{ username }}'
+        mode: 0700
+
+    - name: set authorized key took from file
+      authorized_key:
+        user: '{{ username }}'
+        state: present
+        key: "{{ lookup('file', 'files/id_rsa.pub') }}"
+
+# vim:ft=ansible:
