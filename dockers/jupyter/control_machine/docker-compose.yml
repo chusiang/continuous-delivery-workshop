@@ -1,0 +1,8 @@
+version: '2'
+services:
+
+  control_machine:
+    ports:
+      - '8888'
+    image: chusiang/ansible-jupyter:ubuntu-16.04
+

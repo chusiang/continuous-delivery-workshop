@@ -1,0 +1,8 @@
+version: '2'
+services:
+
+  managed_node:
+    ports:
+      - '22'
+    image: chusiang/ansible-managed-node:ubuntu-16.04
+
