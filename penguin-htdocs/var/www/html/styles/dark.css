@@ -14,7 +14,17 @@ body {
   color: #cccccc;
 }
 
-section {
-  font-size: xx-large;
+header {
+  font-size: medium;
 }
 
+section {
+  font-size: xx-large;
+  margin-top: -10px;
+  margin-bottom: 0px;
+}
+
+footer {
+  margin-top: -20px;
+  margin-bottom: 20px;
+}
