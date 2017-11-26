@@ -1,10 +1,15 @@
 /* 
- * Dark style
+ * Dark style - like Tomorrow Night Eighties theme.
  */
+
+@font-face {
+  font-family: 'SourceCodePro';
+  src: url('SourceCodePro-Medium.otf.woff2');
+}
 
 body {
   text-align: center; 
-  font-family: monospace;
+  font-family: SourceCodePro;
   background-color: #2d2d2d;
   color: #cccccc;
 }
