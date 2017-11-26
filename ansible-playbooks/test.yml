@@ -4,7 +4,7 @@
 #  Blog: http://note.drx.tw
 #  Filename: test.yml
 #  Modified: 2017-08-02 00:24
-#  Description: Ansible Playbook demo for COSCUP 2017.
+#  Description: Verify and Testing deploying status.
 # ===========================================================
 ---
 
@@ -16,29 +16,29 @@
 
   tasks:
     # Staging
-    - name: smoke test | stg.demo.drx.tw
+    - name: smoke test | stg.cdws.drx.tw
       uri:
         url: "http://{{ hostvars[item]['ansible_ssh_host'] }}:10080"
         return_content: yes
       register: stage_web
-      with_inventory_hostnames: stg.demo.drx.tw
+      with_inventory_hostnames: stg.cdws.drx.tw
 
-    - name: print testing result | stg.demo.drx.tw
+    - name: print testing result | stg.cdws.drx.tw
       debug:
         msg: '{{ stage_web }}'
-      with_inventory_hostnames: stg.demo.drx.tw
+      with_inventory_hostnames: stg.cdws.drx.tw
 
     # Production
-    - name: smoke test | prd.demo.drx.tw
+    - name: smoke test | cdws.drx.tw
       uri:
         url: "http://{{ hostvars[item]['ansible_ssh_host'] }}:20080"
         return_content: yes
       register: production_web
-      with_inventory_hostnames: prd.demo.drx.tw
+      with_inventory_hostnames: cdws.drx.tw
 
-    - name: print testing result | prd.demo.drx.tw
+    - name: print testing result | cdws.drx.tw
       debug:
         msg: '{{ production_web }}'
-      with_inventory_hostnames: prd.demo.drx.tw
+      with_inventory_hostnames: cdws.drx.tw
 
 # vim: ft=ansible :
