@@ -1,0 +1,26 @@
+version: '2'
+services:
+
+  build_deb:
+    volumes:
+      - ./:/continuous-delivery-workshop
+    working_dir: /continuous-delivery-workshop
+    command:
+      - /continuous-delivery-workshop/bin/build_deb.sh
+    image: ubuntu:16.04
+
+  # web servers for GitLab Lab.
+  web_stg:
+    ports:
+      - 10022:22/tcp
+      - 10080:80/tcp
+    image: chusiang/ansible-managed-node:ubuntu-16.04
+    restart: always
+
+  web_prd:
+    ports:
+      - 20022:22/tcp
+      - 80:80/tcp
+    image: chusiang/ansible-managed-node:ubuntu-16.04
+    restart: always
+
