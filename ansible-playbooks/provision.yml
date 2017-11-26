@@ -25,6 +25,7 @@
     - name: check environment
       debug:
         msg: "Running for {{ env }} ..."
+      when: "ansible_virtualization_type != 'virtualbox'"
 
     # 先執行 'apt-get update'，再執行 'apt-get install nginx' 指令。
     - name: install nginx with apt
