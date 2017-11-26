@@ -6,3 +6,8 @@ services:
       - '8888'
     image: chusiang/ansible-jupyter:ubuntu-16.04
 
+  managed_node:
+    ports:
+      - '22'
+    image: chusiang/ansible-managed-node:ubuntu-16.04
+
