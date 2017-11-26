@@ -1,7 +1,7 @@
 Package: penguin-htdocs
-Version: 0.1
+Version: 0.2
 Architecture: all
-Description: Demo html documents for DevOps Taiwan x COSCUP 2017.
+Description: Demo html documents for #ContinuousDeliveryWorkshop.
 Maintainer: Chu-Siang Lai <chusiang@drx.tw>
 Depends: nginx (>=1.4.6)
 Replaces: nginx-common
