@@ -1,0 +1,15 @@
+/* 
+ * Dark style
+ */
+
+body {
+  text-align: center; 
+  font-family: monospace;
+  background-color: #2d2d2d;
+  color: #cccccc;
+}
+
+section {
+  font-size: xx-large;
+}
+
