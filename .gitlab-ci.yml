@@ -1,8 +1,19 @@
 stages:
+  - syntax_check
   - build
   - deploy
   - test
   - release
+
+check_playbooks: 
+  image: registry.gitlab.com/chusiang/continuous-delivery-workshop/ansible:2.4.1
+  stage: syntax_check
+  script:
+    - ls
+    - cd ansible-playbooks/
+    - echo "${VAULT_KEY}" > secret.txt
+    - make main
+    - rm -f secret.txt
 
 build_binary: 
   image: registry.gitlab.com/chusiang/continuous-delivery-workshop/ubuntu:16.04
@@ -21,7 +32,7 @@ build_binary:
     - docker
 
 deploy_to_dev: 
-  image: registry.gitlab.com/chusiang/continuous-delivery-workshop/ansible:alpine-3.6
+  image: registry.gitlab.com/chusiang/continuous-delivery-workshop/ansible:2.4.1
   stage: deploy
   script:
     - ls
@@ -40,7 +51,7 @@ deploy_to_dev:
     url: http://stg.cdws.drx.tw
 
 test_dev: 
-  image: registry.gitlab.com/chusiang/continuous-delivery-workshop/ansible:alpine-3.6
+  image: registry.gitlab.com/chusiang/continuous-delivery-workshop/ansible:2.4.1
   stage: test
   script:
     - cd ansible-playbooks/
@@ -58,7 +69,7 @@ test_dev:
     url: http://stg.cdws.drx.tw
 
 release_to_prd: 
-  image: registry.gitlab.com/chusiang/continuous-delivery-workshop/ansible:alpine-3.6
+  image: registry.gitlab.com/chusiang/continuous-delivery-workshop/ansible:2.4.1
   stage: release
   script:
     - cd ansible-playbooks/

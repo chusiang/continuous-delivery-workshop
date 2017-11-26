@@ -1,21 +1,27 @@
-.PHONY: main boot run clean
+.PHONY: main syntax_check lint_check boot run clean
 
-main: syntax_check
+main: syntax_check lint_check
 
 init:
 	if [ ! -d "/ansible-retry" ]; then mkdir "/ansible-retry"; fi
 
 syntax_check:
 	ansible-playbook --syntax-check \
-		setup.yml \
 		deploy.yml \
-		push_ssh_pub_key.yml
+		example.yml \
+		provision.yml \
+		push_ssh_pub_key.yml \
+		setup.yml \
+		test.yml
 
 lint_check:
 	ansible-lint \
-		setup.yml \
 		deploy.yml \
-		push_ssh_pub_key.yml
+		example.yml \
+		provision.yml \
+		push_ssh_pub_key.yml \
+		setup.yml \
+		test.yml
 
 boot:
 	vagrant up
