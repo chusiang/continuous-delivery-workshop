@@ -5,7 +5,7 @@ stages:
   - test
   - release
 
-check_playbooks: 
+check_playbooks:
   image: registry.gitlab.com/chusiang/continuous-delivery-workshop/ansible:2.4.1
   stage: syntax_check
   script:

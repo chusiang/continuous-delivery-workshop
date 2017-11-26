@@ -1,0 +1,16 @@
+---
+
+- name: sample at presentation
+  hosts: all
+  tasks:
+
+    - name: Hello World
+      command: echo 'Hello World'
+      changed_when: false
+
+    - name: Install Vim
+      become: true
+      apt:
+        name: vim
+
+# vim: ft=ansible :
