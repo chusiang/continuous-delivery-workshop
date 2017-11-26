@@ -4,34 +4,34 @@
 #  Blog: http://note.drx.tw
 #  Filename: deploy.yml
 #  Modified: 2017-08-01 23:27
-#  Description: Ansible Playbook demo for COSCUP 2017.
+#  Description: deploy application with ansible.
 # ===========================================================
 ---
 
-- name: ==> Deploying demo instance ...
+- name: ==> Deploying ...
   hosts: all
 
   # Tasks
   #######
 
   tasks:
-    - name: uninstall penguin-htdocs
+    - name: uninstall penguin-htdocs package
       become: true
       apt:
         name: penguin-htdocs
         state: absent
 
-    - name: copy penguin-htdocs package to managed node
+    - name: copy deb file to managed node
       copy:
         src: ../penguin-htdocs.deb
         dest: /tmp/
 
-    - name: install penguin-htdocs
+    - name: install package via deb file
       become: true
       apt:
         deb: /tmp/penguin-htdocs.deb
 
-    - name: remove penguin-htdocs.deb
+    - name: remove deb file
       file:
         path: /tmp/penguin-htdocs.deb
         state: absent
@@ -43,7 +43,8 @@
         state: 'started'
 
   post_tasks:
-    - name: include verify tasks
-      include: tasks/verify.yml
+    # 冒煙測試。
+    - name: smoke testing
+      import_tasks: tasks/verify.yml
 
 # vim: ft=ansible :
